@@ -29,6 +29,10 @@ class PaymentListTest extends TestCase{
         return $paymentList;
     }
 
+    /**
+     * @depends testInsertSalary
+     * ↑↑↑↑↑↑↑ 這一行竟然是有用的
+     */
     public function testCalculateSum($paymentList)
     {
         $this->assertSame(308, $paymentList->calculateSum());
