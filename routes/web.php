@@ -15,6 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts/', function () {
-    return "All Posts:";
-});
+Route::get('/posts/', 'PostsController@index');

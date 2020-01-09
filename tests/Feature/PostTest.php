@@ -26,4 +26,12 @@ class PostTest extends TestCase
             'content' => "攝影棚內拿紙拭淚 柯文哲哭了"
         ]);
     }
+
+    public function testAllPost()
+    {
+        $response = $this->get('/posts/');
+        $response->assertStatus(200);
+        $response->assertSee('All Posts:');
+        $response->assertSee('攝影棚內拿紙拭淚 柯文哲哭了');
+    }
 }
