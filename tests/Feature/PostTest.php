@@ -8,6 +8,15 @@ use Tests\TestCase;
 
 class PostTest extends TestCase
 {
+    // use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutExceptionHandling();
+    }
+
     /**
      * A basic feature test example.
      *
@@ -29,9 +38,21 @@ class PostTest extends TestCase
 
     public function testAllPost()
     {
+        $text = "攝影棚內拿紙拭淚 柯文哲哭了";
+        $this->get("/posts/insert?content=$text");
+
         $response = $this->get('/posts/');
         $response->assertStatus(200);
         $response->assertSee('All Posts:');
         $response->assertSee('攝影棚內拿紙拭淚 柯文哲哭了');
+    }
+
+    public function testGetPost()
+    {
+        $text = "How are you today?";
+        $this->get("/posts/insert?content=$text");
+
+        $response = $this->get('/posts/');
+        $response->assertSee($text);
     }
 }
