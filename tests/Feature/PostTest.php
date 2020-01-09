@@ -55,4 +55,15 @@ class PostTest extends TestCase
         $response = $this->get('/posts/');
         $response->assertSee($text);
     }
+
+    public function testPostPosts()
+    {
+        $text = "Let it go, let it go";
+
+        $this->post('/posts', ['content' => $text]);
+        $this->assertDatabaseHas('posts', ['content' => $text]);
+
+        $response = $this->get('/posts/');
+        $response->assertSee($text);
+    }
 }

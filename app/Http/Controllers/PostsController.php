@@ -28,4 +28,11 @@ class PostsController extends Controller
         $post->content = $request->input('content');
         $post->save();
     }
+
+    public function create(Request $request)
+    {
+        $post = new Post();
+        $post->content = $request->input('content');
+        $post->save();
+    }
 }
