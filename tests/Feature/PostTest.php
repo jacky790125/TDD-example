@@ -19,4 +19,11 @@ class PostTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('All Posts:');
     }
+
+    public function testPost()
+    {
+        $this->assertDatabaseHas('posts', [
+            'content' => "攝影棚內拿紙拭淚 柯文哲哭了"
+        ]);
+    }
 }
