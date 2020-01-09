@@ -21,4 +21,11 @@ class PostsController extends Controller
 
         return view('post', ['posts' => $data]);
     }
+
+    public function store(Request $request)
+    {
+        $post = new Post();
+        $post->content = $request->input('content');
+        $post->save();
+    }
 }

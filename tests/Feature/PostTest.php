@@ -49,7 +49,7 @@ class PostTest extends TestCase
 
     public function testGetPost()
     {
-        $text = "How are you today?";
+        $text = "do you want to build a snowman?";
         $this->get("/posts/insert?content=$text");
 
         $response = $this->get('/posts/');
