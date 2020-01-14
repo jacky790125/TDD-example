@@ -27,7 +27,7 @@ class LoginTest extends DuskTestCase
         User::truncate();
 
         $user = factory(User::class)->create([
-            'email' => 'taylor@laravel.com',
+            'email' => 'jacky790125@laravel.com',
         ]);
 
         $this->browse(function ($browser) use ($user) {
