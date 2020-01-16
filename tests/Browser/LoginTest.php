@@ -9,6 +9,8 @@ use App\User;
 
 class LoginTest extends DuskTestCase
 {
+    use DatabaseMigrations;
+
     /**
      * A Dusk test example.
      *
@@ -24,7 +26,7 @@ class LoginTest extends DuskTestCase
 
     public function testLogin()
     {
-        User::truncate();
+        //User::truncate();
 
         $user = factory(User::class)->create([
             'email' => 'jacky790125@laravel.com',

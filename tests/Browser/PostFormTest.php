@@ -9,6 +9,7 @@ use App\User;
 
 class PostFormTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     public function testIfAuth()
     {
         $this->browse(function (Browser $browser) {
