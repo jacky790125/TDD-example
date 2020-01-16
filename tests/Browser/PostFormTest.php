@@ -20,19 +20,24 @@ class PostFormTest extends DuskTestCase
 
     public function testPostByFormIfAuth()
     {
+        factory(User::class)->create();
+
         $user = factory(User::class)->create([
             'email' => 'taylor@laravel.com',
         ]);
 
+        $this->assertSame(2, $user->id);
+
         $this->browse(function ($browser) use ($user) {
             $browser->loginAs($user)
                 ->visit('/posts/form')
-                ->type('content', "a testing post")
+                ->type('content', "do you want to build a snowman?")
                 ->press('送出貼文');
         });
 
         $this->assertDatabaseHas('posts', [
-            'content' => "a testing post"
+            'content' => "do you want to build a snowman?",
+            'user_id' => $user->id
         ]);
     }
 }
