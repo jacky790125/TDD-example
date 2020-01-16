@@ -67,7 +67,7 @@ class PostTest extends TestCase
 
         $text = "Let it go, let it go";
 
-        $this->post('/posts', ['content' => $text, 'user_id' => $user->id]);
+        $this->actingAs($user)->post('/posts', ['content' => $text]);
         $this->assertDatabaseHas('posts', ['content' => $text, 'user_id' => $user->id]);
 
         $response = $this->get('/posts/');

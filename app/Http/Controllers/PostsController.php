@@ -40,12 +40,8 @@ class PostsController extends Controller
         $post = new Post();
         $post->content = $request->input('content');
 
-        if ($request->has('user_id')) {
-            $post->user_id = $request->input('user_id');
-        } else {
-            // Get the currently authenticated user's ID...
-            $post->user_id = Auth::id();
-        }
+        // Get the currently authenticated user's ID...
+        $post->user_id = Auth::id();
 
         $post->save();
     }
