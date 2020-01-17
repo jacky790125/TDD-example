@@ -15,6 +15,13 @@
                         <div class="card-body">
                             {{ $post->content }}
                         </div>
+                        <form method="post" action="/posts/comment">
+                            @csrf
+                            Leave a Comment:
+                            <input type="text" size="30" name="post_text">
+                            <input type="hidden" name="post_id" value={{ $post->user->id }}>
+                            <input type="submit" value="Send">
+                        </form>
                     </div>
                     @endforeach
                 </div>
