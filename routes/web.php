@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts/', 'PostsController@index');
+Route::get('/posts/', 'PostsController@index')->name('post');
 Route::get('/posts/insert','PostsController@store');
 Route::post('/posts/', 'PostsController@create');
 Route::get('/posts/form', 'PostsController@show')->middleware('auth');
