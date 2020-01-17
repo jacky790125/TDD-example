@@ -94,7 +94,13 @@
             <div class="post">
                 <h3>All Post:</h3>
                 @foreach ($posts as $post)
-                <li>{{ $post->created_at.' - '.$post->content }}</li>
+                <div class="card">
+                    <div class="card-header">{{ $post->user->name }}</div>
+
+                    <div class="card-body">
+                        {{ $post->content }}
+                    </div>
+                </div>
                 @endforeach
             </div>
         </div>
