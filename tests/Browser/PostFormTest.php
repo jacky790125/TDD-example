@@ -40,4 +40,13 @@ class PostFormTest extends DuskTestCase
             'user_id' => $user->id
         ]);
     }
+
+    public function testPostLinkInIndex()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/')
+                ->clickLink('Post')
+                ->assertPathIs('/post');
+        });
+    }
 }
