@@ -92,7 +92,7 @@
             </div>
 
             <div class="post">
-                <h3>All Posts:</h3>
+                <h3>All Post:</h3>
                 @foreach ($posts as $post)
                 <li>{{ $post->created_at.' - '.$post->content }}</li>
                 @endforeach
