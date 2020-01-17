@@ -46,7 +46,7 @@ class PostFormTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
                 ->clickLink('Post')
-                ->assertPathIs('/post');
+                ->assertPathIs('/posts');
         });
     }
 }
