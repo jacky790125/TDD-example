@@ -21,6 +21,8 @@ Route::post('/posts/', 'PostsController@create');
 Route::get('/posts/form', 'PostsController@show')->middleware('auth');
 Route::post('/posts/comment', 'PostsController@comment');
 
+Route::post('/avatar', 'UsersController@avatar');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
