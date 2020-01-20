@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use App\Models\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -63,7 +64,7 @@ class PostTest extends TestCase
             'email' => 'jacky790125@laravel.com',
         ]);
 
-        $this->assertDatabaseHas('users',['email' => 'jacky790125@laravel.com']);
+        $this->assertDatabaseHas('users', ['email' => 'jacky790125@laravel.com']);
 
         $text = "Let it go, let it go";
 
@@ -72,5 +73,25 @@ class PostTest extends TestCase
 
         $response = $this->get('/posts/');
         $response->assertSee($text);
+    }
+
+    public function testCommentRoute()
+    {
+        $post = factory(Post::class)->create();
+        $user = factory(User::class)->create();
+
+        $text = "I will leave a comment.";
+
+        $this->actingAs($user)->post('/posts/comment', [
+            'post_id' => $post->id,
+            'user_id' => $user->id,
+            'comment' => $text
+        ]);
+
+        $this->assertDatabaseHas('comments', [
+            'post_id' => $post->id,
+            'user_id' => $user->id,
+            'comment' => $text
+        ]);
     }
 }
